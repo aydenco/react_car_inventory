@@ -1,4 +1,4 @@
-import { ContactForm } from "./ContactForm";
+import { VehicleForm } from "./VehicleForm";
 
 type Props = {
     open: boolean;
@@ -28,7 +28,7 @@ const Modal = ( props: Props ) => {
                         </p>
                     </div>
                     <div className="flex flex-col items-center text-center mt-3 p-2">
-                        <ContactForm />
+                        <VehicleForm />
                     </div>
                 </div>
             </div>
