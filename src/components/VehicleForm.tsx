@@ -38,7 +38,6 @@ export const VehicleForm = (props:VehicleFormProps) => {
 
   return (
 
-    // TODO- add handle function
     <div>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
