@@ -3,6 +3,7 @@ import Button from './Button'
 import Modal from './Modal'
 import { server_calls } from '../api/server';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import { useGetData } from '../custom-hooks/FetchData';
 
 const columns: GridColDef[] = [
     { field: 'id', headerName: 'ID', hide: true },
@@ -14,8 +15,8 @@ const columns: GridColDef[] = [
 
 function DataTable() {
     const [ open, setOpen ] = useState(false);
-    const { contactData, getData }= useGetData();
-    const [ selecionModel, setSelectionModel ] = useState<any>([])
+    const { vehicleData, getData }= useGetData();
+    const [ selecionModel, setSelectionModel ] = useState<string[]>([])
     // TODO: write useGetData hook and selection model state change content
 
     const handleOpen = () => {
@@ -26,11 +27,17 @@ function DataTable() {
         setOpen(false)
     }
 
-    // TODO: add delete function to button
+    const deleteData = () => {
+        server_calls.delete(selecionModel[0]);
+        getData();
+        console.log(`Selection model: ${selecionModel}`)
+        setTimeout( () => {window.location.reload() }, 500)
+    }
 
   return (
     <>
         <Modal
+            id={selecionModel}
             open={open}
             onClose={handleClose}
         />
@@ -43,18 +50,18 @@ function DataTable() {
                     Create New Vehicle
                 </button>
             </div>
-            <Button className='p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white' >Update</Button>
-            <Button className='p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white' >Delete</Button>
+            <Button onClick={handleOpen} className='p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white' >Update</Button>
+            <Button onClick={deleteData} className='p-3 bg-slate-300 m-3 rounded hover:bg-slate-800 hover:text-white' >Delete</Button>
         </div>
         <div className={ open ? "hidden" : "container mx-10 my-5 flex flex-col"}
             style={{ height: 400, width: '100%' }}
             >
-                <h2 className="p-3 bg-slate-300 my-2 rounded">My Vehicles</h2>
-                <DataGrid rows={contactData} columns={columns} rowsPerPageOptions={[5]}
-                checkboxSelection={true}
-                onSelectionModelChange={ (item:any) => {
-                    setSelectionModel(item)
-                }}
+            <h2 className="p-3 bg-slate-300 my-2 rounded">My Contacts</h2>
+            <DataGrid rows={vehicleData} columns={columns} rowsPerPageOptions={[5]}
+            checkboxSelection={true} 
+            onSelectionModelChange={ (item:any) => {
+              setSelectionModel(item)
+            }}
                 />
         </div>
     </>

@@ -1,6 +1,7 @@
 import { VehicleForm } from "./VehicleForm";
 
 type Props = {
+    id?: string[];
     open: boolean;
     onClose: () => void;
 
@@ -28,7 +29,7 @@ const Modal = ( props: Props ) => {
                         </p>
                     </div>
                     <div className="flex flex-col items-center text-center mt-3 p-2">
-                        <VehicleForm />
+                        <VehicleForm id={props.id} />
                     </div>
                 </div>
             </div>

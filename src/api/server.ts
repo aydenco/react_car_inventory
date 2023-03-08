@@ -1,9 +1,5 @@
 const token = '6ba33d01709e5ff9cc1277187e0154efe68b2eb9d3fd907e'
-const headers = {
-    'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
-    'x-access-token': `Basic ${token}`
-}
+// const headers = 
 
 
 export const server_calls = {
@@ -11,7 +7,11 @@ export const server_calls = {
         const response = await fetch(`https://knotty-daisy-ocelot.glitch.me/api/vehicles`,
         {
             method: 'GET',
-            headers: headers
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'x-access-token': `Basic ${token}`
+            }
         });
 
         if (!response.ok){
@@ -27,7 +27,11 @@ export const server_calls = {
         const response = await fetch(`https://knotty-daisy-ocelot.glitch.me/api/vehicles`,
         {
             method: "POST",
-            headers: headers,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'x-access-token': `Basic ${token}`
+            },
             body: JSON.stringify(data)
         });
 
@@ -42,7 +46,11 @@ export const server_calls = {
         const response = await fetch(`https://knotty-daisy-ocelot.glitch.me/api/vehicles/${id}`,
         {
             method: "POST",
-            headers: headers,
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'x-access-token': `Basic ${token}`
+            },
             body: JSON.stringify(data)
         })
         
@@ -57,7 +65,11 @@ export const server_calls = {
         const response = await fetch(`https://knotty-daisy-ocelot.glitch.me/api/vehicles/${id}`,
         {
             method: "DELETE",
-            headers: headers
+            headers: {
+                'Content-Type': 'application/json',
+                'Access-Control-Allow-Origin': '*',
+                'x-access-token': `Basic ${token}`
+            }
         })
         
         if (!response.ok) {
