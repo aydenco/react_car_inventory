@@ -1,4 +1,4 @@
-import DataTable from '../components/DataTable'
+import DataTable from '../components/DataTable';
 
 function Dashboard() {
   return (

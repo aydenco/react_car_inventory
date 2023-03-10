@@ -1,4 +1,4 @@
-import Background from '../assets/images/mountains.jpg'
+import Background from '../assets/images/mountains.jpg';
 
 function Home() {
   return (

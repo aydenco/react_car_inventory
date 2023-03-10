@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import Button from './Button'
-import Modal from './Modal'
+import { useState } from 'react';
+import Button from './Button';
+import Modal from './Modal';
 import { server_calls } from '../api/server';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import { useGetData } from '../custom-hooks/FetchData';
@@ -56,8 +56,8 @@ function DataTable() {
         <div className={ open ? "hidden" : "container mx-10 my-5 flex flex-col"}
             style={{ height: 400, width: '100%' }}
             >
-            <h2 className="p-3 bg-slate-300 my-2 rounded">My Contacts</h2>
-            <DataGrid rows={vehicleData} columns={columns} rowsPerPageOptions={[5]}
+            <h2 className="p-3 bg-slate-300 my-2 rounded">My Vehicles</h2>
+            <DataGrid rows={vehicleData} columns={columns} rowsPerPageOptions={[5,10,25,50,100]}
             checkboxSelection={true} 
             onSelectionModelChange={ (item:any) => {
               setSelectionModel(item)

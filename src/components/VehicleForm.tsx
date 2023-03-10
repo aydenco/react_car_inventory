@@ -1,10 +1,10 @@
-import Button from "./Button"
-import Input from "./Input"
+import Button from "./Button";
+import Input from "./Input";
 
-import { useForm } from 'react-hook-form'
-import { server_calls } from "../api/server"
-import { useDispatch, useStore } from "react-redux"
-import { chooseMake, chooseModel, chooseYear, chooseColor } from "../redux/slices/RootSlice"
+import { useForm } from 'react-hook-form';
+import { server_calls } from "../api/server";
+import { useDispatch, useStore } from "react-redux";
+import { chooseMake, chooseModel, chooseYear, chooseColor } from "../redux/slices/RootSlice";
 
 
 interface VehicleFormProps {
@@ -21,7 +21,7 @@ export const VehicleForm = (props:VehicleFormProps) => {
     if (props.id && props.id.length > 0) {
       server_calls.update(props.id[0], data)
       console.log(`Updated ${ data } ${ props.id }`)
-      setTimeout(() => {window.location.reload()}, 5000);
+      setTimeout(() => {window.location.reload()}, 500);
       event.target.reset()
     } else {
       dispatch(chooseMake(data.make));
@@ -30,7 +30,7 @@ export const VehicleForm = (props:VehicleFormProps) => {
       dispatch(chooseColor(data.color));
 
       server_calls.create(store.getState())
-      setTimeout( () => {window.location.reload()}, 5000);
+      setTimeout( () => {window.location.reload()}, 500);
     }
     
   }

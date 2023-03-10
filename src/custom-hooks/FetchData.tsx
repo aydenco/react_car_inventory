@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react"
-import { server_calls } from "../api/server"
+import { useEffect, useState } from "react";
+import { server_calls } from "../api/server";
 
  export const useGetData = () => {
     const [ vehicleData, setData ] = useState<[]>([])
